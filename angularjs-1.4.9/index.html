@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AngularJS 1.4.9 App</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="MainController">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+        
+        <div class="input-section">
+            <label for="nameInput">Enter your name:</label>
+            <input type="text" id="nameInput" ng-model="name" placeholder="Your name">
+            <p ng-if="name">Hello, {{name}}!</p>
+        </div>
+        
+        <div class="todo-section">
+            <h2>Simple Todo List</h2>
+            <div class="host-communication-info" ng-if="receivedFromHost > 0">
+                <p class="received-counter">📨 Received {{receivedFromHost}} todo(s) from Angular 20!</p>
+            </div>
+            
+            <input type="text" ng-model="newTodo" placeholder="Add a new todo" ng-keypress="addTodo($event)">
+            <button ng-click="addTodoButton()">Add Todo</button>
+            
+            <ul class="todo-list">
+                <li ng-repeat="todo in todos" class="todo-item" ng-class="{'from-host': todo.fromHost}">
+                    <span ng-class="{'completed': todo.completed}">
+                        <span ng-if="todo.fromHost" class="host-indicator">🚀</span>
+                        {{todo.text}}
+                    </span>
+                    <button ng-click="toggleTodo(todo)" class="toggle-btn">
+                        {{todo.completed ? 'Undo' : 'Complete'}}
+                    </button>
+                    <button ng-click="removeTodo($index)" class="remove-btn">Remove</button>
+                </li>
+            </ul>
+            
+            <p ng-if="todos.length === 0" class="empty-message">No todos yet. Add one above!</p>
+        </div>
+    </div>
+
+    <!-- AngularJS 1.4.9 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

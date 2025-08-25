@@ -1,0 +1,26 @@
+{
+  "name": "angularjs-1.4.9-app",
+  "version": "1.0.0",
+  "description": "A simple AngularJS 1.4.9 application",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo \"Open index.html in your browser to run the application\"",
+    "serve": "npx http-server . -p 3000 --cors",
+    "serve-iframe": "npx http-server . -p 3000 --cors -S -C --verbose"
+  },
+  "keywords": [
+    "angularjs",
+    "1.4.9",
+    "javascript",
+    "frontend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

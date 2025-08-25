@@ -1,0 +1,112 @@
+<div class="iframe-container">
+  <h2>Angular 20 Application</h2>
+  <p class="description">
+    This iframe contains the AngularJS 1.4.9 application with a simple todo list and data binding examples.
+  </p>
+  
+  <div class="server-status">
+    <p><strong>Server Status:</strong> {{ serverCheckMessage }}</p>
+  </div>
+
+  <!-- Todo Communication Panel -->
+  @if (isAngularJSServerRunning) {
+    <div class="communication-panel">
+      <h3>🚀 Send Todo from Angular 20 to AngularJS 1.4.9</h3>
+      <div class="todo-sender">
+        <div class="input-group">
+          <input 
+            type="text" 
+            [(ngModel)]="newTodoText"
+            (keyup)="onKeyUp($event)"
+            (keydown)="onKeyDown($event)"
+            (focus)="onInputFocus()"
+            (blur)="onInputBlur()"
+            placeholder="Enter a todo task to send to AngularJS app..."
+            class="todo-input"
+            autocomplete="off"
+            #todoInput>
+          <button 
+            (click)="sendTodoToIframe()" 
+            [disabled]="!newTodoText.trim()"
+            class="send-button">
+            📤 Send to iframe
+          </button>
+        </div>
+        <!-- <div class="debug-info" style="font-size: 0.8rem; color: #666; margin-top: 5px;">
+          Current value: "{{ newTodoText || '(empty)' }}" | Length: {{ newTodoText?.length || 0 }}
+        </div> -->
+        
+        @if (sentTodos.length > 0) {
+          <div class="sent-todos">
+            <h4>Recently Sent Todos:</h4>
+            <ul>
+              @for (todo of sentTodos; track todo) {
+                <li>{{ todo }}</li>
+              }
+            </ul>
+            <button (click)="clearSentTodos()" class="clear-button">Clear List</button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+  
+  @if (isAngularJSServerRunning) {
+    <div class="iframe-wrapper">
+      <iframe 
+        [src]="iframeUrl"
+        title="AngularJS 1.4.9 Application"
+        width="100%"
+        height="600"
+        frameborder="0"
+        scrolling="yes"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+        #angularjsIframe>
+      </iframe>
+    </div>
+  } @else {
+    <div class="server-instructions">
+      <div class="warning-icon">⚠️</div>
+      <h3>AngularJS Server Not Running</h3>
+      <p>To view the AngularJS 1.4.9 application in the iframe, you need to start the AngularJS development server.</p>
+      
+      <div class="instructions">
+        <h4>Steps to start the AngularJS server:</h4>
+        <ol>
+          <li>Open a new terminal window</li>
+          <li>Navigate to the angularjs-1.4.9 directory: <code>cd angularjs-1.4.9</code></li>
+          <li>Install dependencies (if not done): <code>npm install</code></li>
+          <li>Start the server: <code>npm run serve</code></li>
+          <li>The AngularJS app will be available at <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></li>
+          <li>Refresh this page to see the iframe</li>
+        </ol>
+      </div>
+      
+      <button (click)="checkAngularJSServer()" class="retry-button">
+        Check Server Status
+      </button>
+    </div>
+  }
+  
+  <div class="info-panel">
+    <h3>About this Integration</h3>
+            <ul>
+          <li><strong>Host:</strong> Angular 20 (Modern Angular)</li>
+          <li><strong>Embedded:</strong> AngularJS 1.4.9 (Legacy AngularJS)</li>
+          <li><strong>Integration:</strong> iframe for complete isolation</li>
+          <li><strong>Communication:</strong> PostMessage API for secure cross-frame messaging</li>
+          <li><strong>Data Flow:</strong> Bidirectional todo sharing between frameworks</li>
+        </ul>
+    
+    <div class="tech-comparison">
+      <div class="tech-card">
+        <h4>Angular 20 (Host)</h4>
+        <p>Modern framework with standalone components, signals, and latest features</p>
+      </div>
+      <div class="tech-card">
+        <h4>AngularJS 1.4.9 (Iframe)</h4>
+        <p>Legacy framework with controllers, $scope, and traditional MVC patterns</p>
+      </div>
+    </div>
+  </div>
+</div>

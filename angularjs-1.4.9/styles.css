@@ -1,0 +1,241 @@
+/* AngularJS 1.4.9 App Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #34495e;
+    margin: 30px 0 15px 0;
+    font-size: 1.5em;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.input-section {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.todo-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.todo-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.todo-item {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-item span {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+.todo-item span.completed {
+    text-decoration: line-through;
+    color: #7f8c8d;
+    opacity: 0.6;
+}
+
+.toggle-btn {
+    background: #27ae60;
+    margin-right: 10px;
+}
+
+.toggle-btn:hover {
+    background: #219a52;
+}
+
+.remove-btn {
+    background: #e74c3c;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+}
+
+.empty-message {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.host-communication-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.received-counter {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+}
+
+.todo-item.from-host {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid #667eea;
+    animation: slideInFromTop 0.5s ease-out;
+}
+
+.todo-item.from-host .toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.todo-item.from-host .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.todo-item.from-host .remove-btn {
+    background: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: 1px solid rgba(231, 76, 60, 0.5);
+}
+
+.todo-item.from-host .remove-btn:hover {
+    background: rgba(192, 57, 43, 0.9);
+}
+
+.host-indicator {
+    margin-right: 8px;
+    font-size: 1.2em;
+    animation: bounce 2s infinite;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .todo-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .todo-item span {
+        margin-bottom: 10px;
+    }
+    
+    button {
+        margin: 5px 0;
+    }
+}
